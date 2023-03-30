@@ -1,0 +1,27 @@
+Router class is used to create modular , mountable route handlers
+
+A router instacne is a complete middleware and routing system.
+
+Every Express applicatoin has a built-in app router
+
+Steps :-
+1. Create Router Module - routes/student.ks
+2. Create Router instacne
+    const router = express.Router()
+
+3. Defines Routes using router object
+    router.get('/' , function(req , res)=>{
+        res.send('Hello World)
+    })
+
+4. Export Router   
+    module.exports = router
+
+5. create/open app.ExpressJS
+6. Import rotuer module 
+    const stu = require('./students.js')
+7. Load Router Module   
+    app.use('/vidyarthi',stu)
+
+
+App.use -> It moutns the specified middleware function or functions at the specified path : the middleware function is executed when the base of the requested path matches path

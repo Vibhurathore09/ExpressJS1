@@ -1,0 +1,7 @@
+Express Js is fast , unopinionated , minimalist web framewrok for Node.js.
+->Create Static , Dynamic , and Hybrid Web app
+-> Fast and easy
+-> Routing 
+-> Middleware
+-> Rest API
+-> Very Popular
