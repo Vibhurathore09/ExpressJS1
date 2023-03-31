@@ -1,12 +1,74 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <h1>Home page</h1>
+    <h3>
+
+        <!-- Displaying Variable Data -->
+        <%= name %>
+        <!-- Creating Variable -->
+        <% var name="John" %>
+        <%= name %>
+
+        <%# Comment will not be present in the rendered HTML %>
+        <!-- IF -->
+        <% if(name) { %>
+            Hello <%= name %>
+        <% } %>
+        <br>
+        <!-- IF with Condition -->
+        <% var id = 10 %>
+        <% if(id == 10) { %>
+            Hello 
+        <%= name %> 
+            with id 
+        <%=  id %>
+        <% } %>
+        <!-- If else -->
+        <br>
+        <% if(id == 9) { %>
+        This is 10
+        <% } else { %>
+        This is not 10
+        <% } %>
+
+        <!-- For loop -->
+        <br>
+        <% for(var i=0; i<5; i++) { %>
+            Hello
+            <% } %>
+
+        <!-- For in Loop -->
+        <br>
+        <% for ( const key in marks ) { %>
+        <%= key %>
+        ->
+        
+        <%= marks[key] %>
+        <br>
+        <% } %>
+
+        <!-- For of loop  -->
+        <br>
+        <% for (const mrks of marks) { %>
+            <%= mrks %>
+            <% } %>
+
+        <!-- forEach -->
+        <br>
+        <% marks.forEach((value) => { %>
+            <%= value %>
+            <% }) %>
+
+    </h3>
 </body>
+
 </html>
