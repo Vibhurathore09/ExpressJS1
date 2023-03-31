@@ -5,5 +5,7 @@ const homeController = (req, res) => {
     age: 21,
     marks: [10, 20, 30, 40, 50],
   };
-  res.render("index", data);
+  res.render("index", { name: "sonam" });
 };
+
+export { homeController}
