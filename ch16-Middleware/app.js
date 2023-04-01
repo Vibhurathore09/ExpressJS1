@@ -4,6 +4,8 @@ const port = process.env.PORT || 3000;
 import web from "./router/web.js";
 
 app.set("view engine", "ejs");
+
+// Load Routes
 app.use("/", web);
 
 app.listen(port, () => {
