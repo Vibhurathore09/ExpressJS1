@@ -1,1 +1,25 @@
 Mongoose provides a straight-forward , schema-based solution to model yoir application data. It includes built-in type casting , validation , query building , business logic hooks and more, out of the box
+
+
+connect() - Mongoose requires a connection  to a MOngoDB databse . You can connect to a locally hosted databse with mongoose.connect()
+
+Syntax -> connect(uri , options , callback)
+
+uri -> It;s a string used as connection uri.
+
+options -> It's an object passed down to the MongoDB driver's connect funciton
+
+callback -> It is a callback funciton
+
+
+const options = {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+}
+
+user -> It's a string
+pass -> It's string
+dbName -> It's string
+authSource -> It's string
+autoIndex -> It's Boolean
+
