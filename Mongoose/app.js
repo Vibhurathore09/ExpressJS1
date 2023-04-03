@@ -9,6 +9,8 @@ const DATABASE_URL =
 // mongoose.connect("mongodb://127.0.0.1:27017/schoolDb").then(() => {
 //   console.log("Connected Successfully to MongoDB..");
 // });
+
+
 connectDB(DATABASE_URL);
 app.listen(port, () => {
   console.log(`Server running on port http://localhost:${port}`);
