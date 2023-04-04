@@ -1,0 +1,74 @@
+SCHEMA -> A doucment schema is a JSON object that allows you to define the shape and content of documents and embedded documents in a collection. You can use a schema to require a speific set of fields configure the content of a filed, or to validate changes to a document based on its beginning and ending states.
+
+
+Everything in Mongoose starts with a Schema. Each schema maps to a MangoDB collection and defines the shape of the documents within that collection.
+
+
+By default , Mongoose adds an_id property to your schemas.
+
+
+Synctax ->
+import monoose from 'mongoose'
+
+const nameSchema = enw mongoose.Schema({
+    key1 : String ,  string is shorthand for {type : string}
+    key2 : Number ,  // {type: number}
+    key3 : mongoose.Deciam128,
+    key4: [String], //array of String
+    key5 : Boolean ,
+     key6 : [{key : Strting , key : Date}],
+     key7 : Date
+})
+
+
+_id property -> When you create a new document with the automatically added id_property , Mongoose createa a new _id of type ObjectId to your document.
+
+Mongoose will refuse to save a document that doesn't have an _id .
+
+
+Type -> type is a special property in Mongoose shcemas. when Mongoose findsa a nested propery named type in your shcemsa , Mongoose assumes that it need to define a SchemaType with the given type.
+
+
+String , Numebr , Data,  Buffer , Boolean , Mixed , ObjedtId , Array , Deciamal128 , Map , Schema
+
+STRING ->
+lowercase -> boolean whether to always call .toLowerCase()
+
+
+All Schema Types :
+required : boolean or function . if true adds a required validator for this property
+
+default : Any of function . set a default value for the path . If the value is a functoin , the return value of the functoin is used as the default .
+
+select : boolean , speifies default projections for queries.
+
+validate : fucntion , adds a validator function for this property
+
+get : function , defined a custom getter for this property using Object.defineProperty().
+
+
+schema.path() -> the schema.path function returns the instantiaed schema type for a given path.
+
+
+Model -> Models are fancy constructors compiled from shcema definitions . AN instance of a model is called a document . Models are responsible for creating and reading documents from the underlying MongoDB database.
+
+
+
+
+CREATING DOCUMENT USING Model
+// Defining Schema
+
+const studentSchmea = mongoose.schema({name : String})
+
+// Compiling schema
+
+const Student = mongoose.model("Student" , studentSchema);
+
+// Creating document
+
+const stu = new Student({
+    name : 'Sonam'
+})
+
+// Saving document
+await stu.save()
