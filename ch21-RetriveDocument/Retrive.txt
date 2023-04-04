@@ -1,0 +1,7 @@
+
+
+find () - the find() method rueturns all occurrences in the selection.
+
+Syntax => find(filter_object , projection_object , options_object , callback)
+
+Example -> await StudentModel.find({name : 'Sonam} , {name : 1 , age : 1} , {skip : 5})

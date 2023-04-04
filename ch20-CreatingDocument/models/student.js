@@ -12,7 +12,7 @@ const studentSchema = new mongoose.Schema({
   hoobies: { type: Array },
   isActive: { type: Boolean },
   comments: [
-    { valeu: { type: String }, publish: { type: Date, default: Date.now } },
+    { value: { type: String }, publish: { type: Date, default: Date.now } },
   ],
   join: { type: Date, default: Date.now },
 });
@@ -21,25 +21,33 @@ const studentSchema = new mongoose.Schema({
 // Compiling Schema
 const studentModel = mongoose.model("student", studentSchema);
 
-const createDoc = async (nm , ag , fe , hob , isact , comt) => {
-  try {
-    // Creating new document
-    const studentDoc = new studentModel({
-      name: nm,
-      age: ag,
-      fees: fe,
-      hoobies: hob,
-      isActive: isact,
-      comments: comt,
-      join: Date.now(),
-    });
+// Retriving document
+const getAllDoc = async () =>{
+  const result = await studentModel.find();
+  // console.log(result);
+  // result.forEach((doc) => {
+  //   console.log(
+  //     doc.name,
+  //     doc.age,
+  //     doc.fees,
+  //     doc.hoobies[0],
+  //     doc.hoobies[1],
+  //     doc.isActive,
+  //     doc.join,
+  //     doc.comments[0].value,
+  //     doc.comments[0].publish,
+  //   );
+  // });
+}
 
-    // Saving document
-    const result = await studentDoc.save();
-    console.log(result);
-  } catch (error) {
-    console.log(error);
-  }
-};
 
-export default createDoc;
+// Retriving All Document With Specific Fields
+const getAllDocSpecificField = async () =>{
+  // const result = await studentModel.find().select('name age'); Include
+  // const result = await studentModel.find().select(['name' , 'age']); //Include
+  const result = await studentModel.find().select(['-name' , '-age']); //Exclude both ways [] , '' also works
+  console.log(result);
+
+}
+
+export  {getAllDoc , getAllDocSpecificField};
