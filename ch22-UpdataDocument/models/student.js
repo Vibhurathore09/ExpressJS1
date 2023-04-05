@@ -21,4 +21,46 @@ const studentSchema = new mongoose.Schema({
 const studentModel = mongoose.model("student", studentSchema);
 
 
-//  Delete Document
+
+// Update Document
+const updateDocById = async () => {
+  try {
+    const result = await studentModel.findByIdAndUpdate(
+      "642c40156eb2e58d98ab47f0",
+      {
+        name: "Sammer",
+      },
+      {
+        returnDocument: "after",
+      }
+    );
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const upDateOneDoc = async (id) => {
+  try {
+    const result = await studentModel.updateOne(
+      { _id: id },
+      { name: "Sammer" }
+    );
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+const I = async (id) => {
+  try {
+    const result = await studentModel.updateOne(
+      { _id: id },
+      { name: "Subodh" },
+      { upsert: true }
+    );
+    console.log(result);
+  } catch (error) {
+    console.log(error);
+  }
+};
+export { updateDocById, upDateOneDoc , I };

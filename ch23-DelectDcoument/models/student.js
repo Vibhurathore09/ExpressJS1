@@ -20,45 +20,33 @@ const studentSchema = new mongoose.Schema({
 // Compiling Schema
 const studentModel = mongoose.model("student", studentSchema);
 
-// Update Document
-const updateDocById = async () => {
+//  Delete Document
+const deleteDocByID = async (id) => {
   try {
-    const result = await studentModel.findByIdAndUpdate(
-      "642c40156eb2e58d98ab47f0",
-      {
-        name: "Sammer",
-      },
-      {
-        returnDocument: "after",
-      }
-    );
+    const result = await studentModel.findByIdAndDelete(id);
     console.log(result);
   } catch (error) {
     console.log(error);
   }
 };
-
-const upDateOneDoc = async (id) => {
+// Delete One Doc
+const DeleteOneDoc = async (id) => {
   try {
-    const result = await studentModel.updateOne(
-      { _id: id },
-      { name: "Sammer" }
-    );
+    const result = await studentModel.deleteOne(id);
     console.log(result);
   } catch (error) {
     console.log(error);
   }
 };
-const I = async (id) => {
+// Delete Many Doc
+const DeleteManyDoc = async (n) =>{
   try {
-    const result = await studentModel.updateOne(
-      { _id: id },
-      { name: "Subodh" },
-      { upsert: true }
-    );
+    const result = await studentModel.deleteMany({
+      name : n
+    });
     console.log(result);
   } catch (error) {
-    console.log(error);
+    
   }
-};
-export { updateDocById, upDateOneDoc , I };
+}
+export { deleteDocByID , DeleteOneDoc , DeleteManyDoc };
