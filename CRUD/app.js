@@ -12,8 +12,9 @@ app.set("view engine", "ejs");
 connectdb(DATABASE_URL);
 
 // static Files
-app.use(express.static(join(process.cwd(), "public")));
 
+app.use("/student",express.static(join(process.cwd(), "public")));
+app.use("/student/edit",express.static(join(process.cwd(), "public")));
 // load Routes
 app.use('/student' , web)
 
