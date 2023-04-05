@@ -1,0 +1,27 @@
+Each model has its own update method for modifying odcuments in the database without returning them to your application.
+
+findByIdAndUpdate() -> It find a matching document, updates it accoring to the update arg , passing any opotions , and returns the found document (if any) to the callback.
+Syntax :- findByIdAndUpdate(id, [update], [options], [callback])
+
+id can be object , number or string.
+Example -> findByIdAndUpdate("323121" , {name : "Sunil"} ,{ returnDocument : after} )
+
+
+
+
+UpdateOne() -> It is used to update single doucment . MongoDb will update only the first document that matches filter regardless of the value of the multi option.
+Syntax :-> UpdateOne(filter , update , options , callback);
+Example ->updateOne({_id : "12345"} , {name : "Sunil"}, {upsert : true})
+
+upsert -> if true , and no documents found , insert a new document.
+
+
+
+
+
+
+updateMany() -> It is used to update multiple document . MongoDb will update all document that macch filter regardless of the value of the multii   option.
+
+Syntax : updateMany(filter , update , options , callback);
+
+Example :- updateMany({name : "Sunil"} , {name : "Sunil Kumar"} , {upsert : true})
