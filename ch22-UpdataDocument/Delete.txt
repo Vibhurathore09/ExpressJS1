@@ -1,0 +1,7 @@
+findByIdAndDelete() - It finds a matching document then delete it.
+
+
+deleteOne() -> It is used to delete single doucment. MOngoDB will delete only the fist document that matched conditions.
+
+
+deleteMany() -> It is used to delete multiple document . MOngoDB will delete all documents that match conditions.
