@@ -1,16 +1,20 @@
 import StudentModel from "../models/student.js";
 class studentController {
   static createDoc = async (req, res) => {
-    // try {
-        
-    // } catch (error) {
-        
-    // }
-    console.log(
-        "Create Doc Post Method"
-    );
-    console.log(req.body);
-    res.redirect("/student");
+    try {
+      const { name, age, fees } = req.body;
+      const doc = new StudentModel({
+        name: name,
+        age: age,
+        fees: fees,
+      });
+      //   Saving Docuement
+      const result = await doc.save();
+      //   console.log(result);
+      res.redirect("/student");
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   static getAllDoc = async (req, res) => {
@@ -24,16 +28,41 @@ class studentController {
     // res.render("index");
   };
 
-  static editDoc = (req, res) => {
-    res.render("edit");
+  // Show Edit Form with Data
+  static editDoc = async (req, res) => {
+    // console.log(req.params.id);
+    try {
+      const result = await StudentModel.findById(req.params.id);
+      // console.log(result);
+      res.render("edit", { data: result });
+    } catch (error) {
+      console.log(error);
+    }
   };
 
-  static updateDocById = (req, res) => {
-    res.redirect("/student");
+  //   Update Document
+  static updateDocById = async (req, res) => {
+    // console.log(req.params.id)
+    // console.log(req.body)
+    try {
+      const result = await StudentModel.findByIdAndUpdate(
+        req.params.id,
+        req.body
+      );
+      res.redirect("/student");
+    } catch (error) {
+      console.log(error);
+    }
   };
-
-  static deleteDocById = (req, res) => {
-    res.redirect("/student");
+  // Delete Document
+  static deleteDocById = async (req, res) => {
+    // console.log(req.params.id);
+    try {
+      const result = await StudentModel.findByIdAndDelete(req.params.id);
+      res.redirect("/student");
+    } catch (error) {
+      console.log(error);
+    }
   };
 }
 

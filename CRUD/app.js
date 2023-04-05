@@ -11,6 +11,8 @@ app.set("view engine", "ejs");
 // Database Connection
 connectdb(DATABASE_URL);
 
+app.use(express.urlencoded({extended : false}))
+
 // static Files
 
 app.use("/student",express.static(join(process.cwd(), "public")));

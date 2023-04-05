@@ -52,13 +52,20 @@
                                             <%= item.fees %>.7
                                         </td>
                                         <td>
-                                            <i class="fas fa-pen-square text-info"> </i>
-                                            <i class="fas fa-trash text-danger"> </i>
+                                            <form class="d-inline" action="/student/edit/<%= item._id %>">
+                                                <button type="submit" class="btn"><i
+                                                        class="fas fa-pen-square text-info"> </i></button>
+                                            </form>
+                                            <form class="d-inline" method = "post" action="/student/delete/<%= item._id %>">
+                                                <button type="submit" class="btn"><i class="fas fa-trash text-danger">
+                                                    </i></button>
+                                            </form>
+
                                         </td>
                                     </tr>
                                     <% }); %>
 
-                        </tbody>
+                        </tbody>F
                     </table>
             </div>
         </div>
