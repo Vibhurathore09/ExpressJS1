@@ -1,0 +1,24 @@
+cookie-parser -> cookie parser is a middleware which parses coookies attached to the client request object.
+
+Parse cookie header and populate req.cookie with an object keyed by the cookie names.
+
+mpn i cookie-parser
+import cookieParser from 'cookie-parser'  
+var cookieparser = require('cookie-parser');
+app.use(cookieParser());
+
+
+
+res.cookie(name, value, [options]) -> This method is used to set cookie name to value. The value parameter may be a string or object converted to JSON.
+
+
+req.cookie() -> Thos propertyu is used toget cookies.
+When using cookie-parser middleware, thise property is an object that contains cookies send by the request . If the requyest contains no cookies , it default to {}
+
+Example -> 
+req.cookied 
+req.cookies.username
+
+
+
+res.clearCookie(name, [options]) -> This method is used to clear the cookie with the given name. For example, res.clearCookie('session').
