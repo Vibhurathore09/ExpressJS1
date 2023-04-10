@@ -1,0 +1,45 @@
+npm i express-session
+import session from 'express-session';
+var session = require('express-session');
+
+app.use(session({
+    secret : 'iamkey',
+    resave : false,
+    saveUninitialized : true,
+    cookie : {
+        path : '/', httOnly : true , secure : false, maxAge : 5000
+    }
+}))
+
+
+secret -> This is the secret used to sign the seesion ID cookie . This can be either a string for a single secret , or an array of multuiple secretes . If an array of secrets is porvided , only the first element will be used to sign the session ID cookie , while all the elements will be considered when verifying the signature in requests. The secret itself should be not easily parsed by a human and woild best be a random set of characters.
+
+
+
+resave -> It forces the session to be saved back to the session store , even if the session was never modified during the request . True If it does not implement the touch method and your store sets an expirtation date on stored sessions . False if it implements the touch method
+
+
+
+name -> The name of the session ID cookie to set in the response . The default value is 'connect.sid'.
+
+
+proxy -> Trust the reverse proxy when setting secure cookies.
+
+
+store - > The session store instance , defaults to a new MemoryStore instance.
+
+
+req.session -> To store or access data , simply use the request propertyu req.session , which is (generally) serialized as JSON by the store , so nested objects are typically fine.
+
+
+req.session.regenerate() -> To regenerate the session simply invoke the method . Once complete , a new  SID and Session  will be initialied at the req.session and the callbac kwill be invoked.
+
+req.session.destroy() -> To destroy the session simply invoke the method . Once complete , the session will be removed from the store , the req.session object will be empty and the callback will be invoked.
+
+
+req.session.reload() -> To reload the session simply invoke the method . Once complete , the session will be reloaded from the store and the callback will be invoked.
+
+req.session.id -> To get the session ID simply access the property . The value will be a string.
+
+Cookie.originalMaxAge - > The originalMaxAge from the options in milliseconds.
+
