@@ -20,5 +20,13 @@ class StudentController {
     });
     res.send("Session Deleted");
   };
+  static session_Example = (req, res) => {
+    if (req.session.count) {
+      req.session.count++;
+    } else {
+      req.session.count = 1;
+    }
+    res.send(`You have visited this page ${req.session.count} times`);
+  };
 }
 export default StudentController;
