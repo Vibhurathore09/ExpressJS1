@@ -1,8 +1,8 @@
 class StudentController {
   static set_cookie = (req, res) => {
-    res.cookie("username", "express");
+    res.cookie("username", "express", { maxAge: 10000 });
     res.cookie("cart", 5);
-    res.send("Cookie Set...");  
+    res.send("Cookie Set...");
   };
 
   static get_cookie = (req, res) => {
@@ -13,6 +13,7 @@ class StudentController {
   };
 
   static delete_cookie = (req, res) => {
+    res.clearCookie("username", "cart");
     res.send("Cookie Deleted...");
   };
 }
